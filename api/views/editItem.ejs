@@ -1,0 +1,23 @@
+<%- include ('./partials/header') %>
+
+<div class='default-container'>
+        <h3>Registro de Item</h3>
+        <form class='form-container' action='/api/v1/user/<%=user.id%>/item/<%=item.id%>?_method=PUT' method="post">
+            <div class='form-item'>
+                <label for='name'>Nome</label>
+                <input id='name' type='text' name='name' placeholder='Nome' value=<%=item.name%> />        
+            </div>
+            <div class='form-item'>
+                <label for='description'>Descrição</label>
+                <input id='description' type='text' name='description' placeholder='Descrição' value=<%=item.description%> />        
+            </div>
+            <div class='form-item'>
+                <label for='price'>Preço</label>
+                <input id='price' type='text' name='price' placeholder='Preço' value=<%=item.price%>  />
+            </div>
+            <button type='submit' class='default-container-button'>Finalizar Registro</button>
+        </form>
+    </div>
+
+
+<%- include ('./partials/footer') %>

@@ -1,0 +1,57 @@
+<%- include ('./partials/header') %>
+<div class='default-container'>
+    <% if(user){ %>
+        <%console.log(user)%>
+        <p>Welcome <%= user.name %></p>
+    <% } %>
+    <h3>Lojinha do Empreendedor</h3>
+    <% if(user){ %>
+        
+    <div class='default-container-button'><a href='/api/v1/user/<%=user.id%>/item'>Adicionar Item</a></div>
+    <% } %>
+    <div class='items-table'>
+        <div class='first-row'>
+            <div class='item-id'>Id</div>
+            <div class='item-name'>Item</div>
+            <div class='item-price'>Preço</div>
+            <div class='item-description'>Descrição</div>
+            <div class='item-options'></div>
+        </div>
+        <div class='items-list'>
+            <%if(list===true){%>
+            <% item.forEach(element=>{ %>
+            <div class='items-list-row'>
+                <div class='item-id'><%=element.id%></div>
+                <div class='item-name'><%=element.name%></div>
+                <div class='item-price'><%=element.price%></div>
+                <div class='item-description'><%=element.description%></div>
+                <div class='item-options'>
+                 <a href='/api/v1/user/<%=user.id%>/item/<%=element.id%>/edit'>
+                    <button><i class="fas fa-pen"></i></button>
+                 </a>
+                 <form style="margin-block-end: 0;" action='/api/v1/user/<%=user.id%>/item/<%=element.id%>?_method=DELETE' method="post">
+                    <button type="submit"><i class="fas fa-trash"></i></button>
+                 </form>
+                </div>  
+            </div>  
+          <% })}else if(list !==true){ %>
+            <div class='items-list-row'>
+                <div class='item-id'><%=item.id%></div>
+                <div class='item-name'><%=item.name%></div>
+                <div class='item-price'><%=item.price%></div>
+                <div class='item-description'><%=item.description%></div>
+                <div class='item-options'>
+                 <a type='button' href='/api/v1/user/<%=user.id%>/item/<%=item.id%>/edit'>
+                    <button><i class="fas fa-pen"></i></button>
+                 </a>
+                 <form style="margin-block-end: 0;" action='/api/v1/user/<%=user.id%>/item/<%=item.id%>?_method=DELETE' method="post">
+                    <button type="submit"><i class="fas fa-trash"></i></button>
+                 </form>
+                </div>  
+            </div>  
+       <% } %>
+        </div>
+    </div>
+</div>
+
+<%- include ('./partials/footer') %>

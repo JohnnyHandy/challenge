@@ -1,0 +1,26 @@
+<html>
+    <header>
+        <meta charset="UTF-8">
+        <link href="/css/style.css" rel="stylesheet" type="text/css">
+        <script src="https://kit.fontawesome.com/c04a2371a9.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    </header>
+    <body class='body-class'>
+    <div class="flash-container">
+        
+            <% if(error && error.length>0){ %>
+                <div class="alert-danger" role="alert">
+                    <%= error %>
+                </div>
+            <% } %>
+            <% if(success && success.length>0){ %>
+                <div class="alert-success" role="alert">
+                    <%= success %>
+                </div>
+            <% } %>
+            <% if(info && info.length >0){ %>
+                <div class="alert-info" role="alert">
+                    <%= info %>
+                </div>
+            <% } %>
+    </div>

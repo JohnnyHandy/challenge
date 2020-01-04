@@ -2,7 +2,7 @@
 
 <div class='default-container'>
         <h3>Registro de Item</h3>
-        <form class='form-container'>
+        <form class='form-container' method='post' action='/api/v1/user/<%=user.id%>/item'>
             <div class='form-item'>
                 <label for='name'>Nome</label>
                 <input id='name' type='text' name='name' placeholder='Nome' />        

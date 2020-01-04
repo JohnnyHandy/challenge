@@ -1,0 +1,20 @@
+<%- include ('./partials/header') %>
+<div class='default-container'>
+    <% if(user !== undefined && user !==null & user!==false){ %>
+        <p>Bem vindo <%=user.name%></p>
+    <% } %>
+    <div class='container-title'>
+        <h3>Lojinha do Empreendedor</h3>
+    </div>
+    <% if(user){ %>
+        
+        <div class='default-container-button'><a href='/api/v1/user/<%=user.id%>/item'>Adicionar Item</a></div>
+        <div class='default-container-button'><a href='/api/v1/user/<%=user.id%>/item/list'>Lista de Items</a></div>
+        <div class='default-container-button'><a href='/logout'>Logout</a></div>   
+    <% }else if(!user) {%>
+        <div class='default-container-button'><a href='/api/v1/auth/sign_in'>Login</a></div>  
+        <div class='default-container-button'><a href='/api/v1/user'>Registro de usuário</a></div>
+        <% } %>
+</div>
+
+<%- include ('./partials/footer') %>

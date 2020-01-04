@@ -1,0 +1,4 @@
+https://sequelize.org/v5/
+https://itnext.io/implementing-json-web-tokens-passport-js-in-a-javascript-application-with-react-b86b1f313436
+https://medium.com/front-end-weekly/learn-using-jwt-with-passport-authentication-9761539c4314
+https://dev.to/moz5691/method-override-for-put-and-delete-in-html-3fp2

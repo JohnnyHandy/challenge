@@ -1,0 +1,43 @@
+<%- include ('./partials/header') %>
+<div class='default-container'>
+    <h2>Dados do lojista</h2>
+    <div class='user-info-container'>
+        <div class='user-id'>
+            <div class='tag'>Numero de identificação</div> 
+            <div><%= user.id %></div> 
+        </div>
+        <div class='user-name'>
+            <div class='tag'>Nome</div>
+            <div><%= user.name %></div>
+        </div>
+        <div class='user-cnpj'>
+            <div class='tag'>CNPJ</div>
+            <div><%= user.cnpj %></div>
+        </div>
+        <div class='user-email'>
+            <div class='tag'>Email</div>
+            <div><%= user.email %></div>
+        </div>
+    </div>
+    <h2>Items do lojista</h2>
+    <div class='items-table'>
+        <div class='first-row'>
+            <div class='item-id'>Id</div>
+            <div class='item-name'>Item</div>
+            <div class='item-price'>Preço (R$)</div>
+            <div class='item-price'>Preço c/ desconto (R$)</div>
+            <div class='item-description'>Descrição</div>
+        </div>
+        <% item.forEach(element=>{ %>
+        <div class='items-list-row'>
+            <div class='item-id'><%=element.id%></div>
+            <div class='item-name'><%=element.name%></div>
+            <div class='item-price'><%=element.price%></div>
+            <div class='item-price'><%=element.price-element.price*(5/100)%></div>
+            <div class='item-description'><%=element.description%></div>
+        </div>  
+      <%}) %>
+    </div>
+</div>
+
+<%- include ('./partials/footer') %>
