@@ -1,5 +1,7 @@
-import passport from 'passport'
-import axios from 'axios'
+import passport from 'passport';
+import axios from 'axios';
+import jwt from 'jsonwebtoken'
+import jwtSecret from '../config/jwtConfig'
 var LocalStorage = require('node-localstorage').LocalStorage,
 localStorage = new LocalStorage('./scratch');
 
@@ -8,18 +10,32 @@ localStorage = new LocalStorage('./scratch');
 var middlewareObj ={}
 
 middlewareObj.authorize = function(request, response, next) {
+  const token = request.headers.authorization
+  const modifiedToken = token.replace('Bearer ','')
+  try {
+    var decoded = jwt.verify(modifiedToken,jwtSecret.secret)
+    console.log(decoded)
     passport.authenticate('jwt', { session: false, }, async (err,user,info) => {
-        if (err || !user) {
-            response.status(401)
-            next()
-        } 
-        if(user){
-          request.session.user = user
-        }else{
-          request.session.user = undefined
-        }
-        next()
+      if (err || !user) {
+          console.log(err)
+      } 
+      if(user){
+        console.log('Authorized')
+        request.session.user = user
+        response.send({
+          user:user,
+          message:'User Authorized'
+        })
+      }else{
+        console.log('Undefined')
+        request.session.user = undefined
+      }
+      next()
     })(request, response, next);   
+
+  } catch(err){
+      response.send({error:err})
+    }
   }
 
 middlewareObj.authenticate = async function(request,response,next){

@@ -1,0 +1,82 @@
+.App {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.form-button{
+  background: rgb(65, 155, 233);
+  border-radius: 15%;
+  color: white;
+  cursor: pointer;
+  font-size: large;
+  font-weight: bold;
+  height: 3em;  
+  transition: all 0.5s;
+  width: 50%;
+}
+.form-button:hover {
+  background-color: white;
+  color: black;
+}
+
+.form-container{
+  align-items: center;
+  background-color: rgba(255,255,255,0.3);
+  border: 1px solid black;
+  border-radius: 2%;
+  display: flex;
+  flex-direction: column;
+  font-size: xx-large;
+  height: 30rem;
+  justify-content: center;
+  margin-top: 3%;
+  width: 30%;
+}
+
+.form-item{
+  height: 3em;
+  text-align: center;
+  width: 70%;
+}
+
+.form-style{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.middle-container{
+  background-image: url('./assets/fabric2.jpg');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.navbar-container{
+  align-items: center;
+  background: #bbeaf0;
+  display: flex;
+  height: 3rem;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.navbar-left{
+  display: flex;
+  width: 150px;
+  justify-content: space-evenly;
+
+}
+
+.navbar-right{
+  display: flex;
+  width: 150px;
+  justify-content: space-evenly;
+
+}

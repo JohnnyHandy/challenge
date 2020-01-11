@@ -6,10 +6,11 @@ import middleware from '../middleware/index'
 
 router.get('/',middleware.authenticate,(req,res)=>{
   if(req.session.user){
-    res.render('home',{user:req.session.user});
+    // res.render('home',{user:req.session.user});
+    res.send({user:req.session.user})
   }else if(req.session.error){
-    req.session.user = null
-    res.render('home',{user:req.session.user})
+    res.send({error:'error'})
+    // res.render('home',{user:req.session.user})
   }
 })
 
