@@ -1,1 +1,8 @@
-export {checkAuth,setAuth,setUser,setError,handleLogin} from './actions'
+export {
+    checkAuth,
+    setAuth,
+    setUser,
+    setError,
+    handleLogin,
+    handleRegister
+} from './actions'

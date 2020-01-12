@@ -26,7 +26,7 @@ const Login =(props)=>{
   return(
     <div className='form-container'>
     <i className="fas fa-sign-in-alt"></i>
-    <span>Página de Login</span>
+    <span>Login</span>
     <form className='form-style' onSubmit={handleSubmit}>
         <input className='form-item' id='email' type='text' name='email' onChange={handleEmailChange} placeholder='E-mail / CNPJ' />
         <input className='form-item' id='password' type='password' name='password'  onChange={handlePasswordChange} placeholder='Senha' />

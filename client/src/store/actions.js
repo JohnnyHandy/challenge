@@ -33,6 +33,14 @@ export const handleLogin = (data)=>{
     }
 }
 
+export const handleRegister = (data)=>{
+    return async dispatch=>{
+        axios.post('http://localhost:3000/api/v1/user',data)
+        .then(response=>console.log(response))
+        .catch(error=>console.log(error))
+    }
+}
+
 export const setAuth =(payload)=>{
     return{
         type:actions.SET_AUTH,

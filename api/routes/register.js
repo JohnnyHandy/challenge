@@ -16,52 +16,48 @@ if(req.session.user){
     res.render('register')
     };  
 })
-router.post('/',middleware.authenticate,async (req,res,next)=>{
-if(req.session.user){
-    req.flash('info','Usuário já está logado!')
-    res.redirect('/api/v1')
-    }else if(req.session.error){
+router.post('/',async (req,res,next)=>{
     passport.authenticate('register',(err,user,info)=>{
         if(err){
-            console.log(err);
+            res.send({error:err});
         }
         if(info!==undefined){
-            req.flash('error','Usuário já existe!')
-            res.redirect('back');
-        }else{
-            req.logIn(user,err=>{
-                const data ={
-                    name:req.body.name,
-                    cnpj:req.body.cnpj,
-                    email:req.body.email
-                }
-            User.findOne({
-                where:{
-                    email:data.email
-                }
-            }).then(user=>{
-                user.update({
-                    name:data.name,
-                    cnpj:data.cnpj,
-                    email:data.email
-                })
-                .then(()=>{ 
-                    req.flash('success','Usuário criado com sucesso!');
-                    res.redirect('/api/v1')
-                })
-                .catch(error=>{
-                    req.flash('error',error.message)
-                    res.redirect('back')
-                })
-            })
-            .catch(error=>{
-                req.flash('error',error.message)
-                res.redirect('back')
-            })
-        });
+            res.send({info:info})
         }
+        res.send(user)
+        // else{
+        //     req.logIn(user,err=>{
+        //         const data ={
+        //             name:req.body.name,
+        //             cnpj:req.body.cnpj,
+        //             email:req.body.email
+        //         }
+        //     User.findOne({
+        //         where:{
+        //             email:data.email
+        //         }
+        //     }).then(user=>{
+        //         user.update({
+        //             name:data.name,
+        //             cnpj:data.cnpj,
+        //             email:data.email
+        //         })
+        //         .then(()=>{ 
+        //             req.flash('success','Usuário criado com sucesso!');
+        //             res.redirect('/api/v1')
+        //         })
+        //         .catch(error=>{
+        //             req.flash('error',error.message)
+        //             res.redirect('back')
+        //         })
+        //     })
+        //     .catch(error=>{
+        //         req.flash('error',error.message)
+        //         res.redirect('back')
+        //     })
+        // });
+        // }
     })(req,res,next);
-}
 })
 
 
