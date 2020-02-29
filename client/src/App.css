@@ -55,6 +55,7 @@
 .middle-container{
   display: flex;
   justify-content: center;
+  min-height:35rem;
   position:fixed;
   top:3rem;
   width: 100%;
@@ -87,8 +88,8 @@
 }
 
 .navbar-right{
+  align-items: center;
   display: flex;
   width: 150px;
   justify-content: space-evenly;
-
 }

@@ -4,5 +4,7 @@ export {
     setUser,
     setError,
     handleLogin,
-    handleRegister
+    handleRegister,
+    handleLogout,
+    registerNewItem
 } from './actions'

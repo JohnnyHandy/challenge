@@ -31,11 +31,16 @@ const setError = (state,action)=>{
     return updateObject(state,{error:updatedError})
 }
 
+const setLogout = (state,actions)=>{
+    return updateObject(state,{auth:false,user:undefined,token:null})
+}
+
 const reducer = (state = initialState,action)=>{
     switch(action.type){
         case actions.SET_AUTH:return setAuth(state,action);
         case actions.SET_USER:return setUser(state,action);
         case actions.SET_ERROR:return setError(state,action);
+        case actions.LOGOUT:return setLogout(state,action);
         default: return state;
     }
 }

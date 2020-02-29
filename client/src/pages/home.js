@@ -5,11 +5,13 @@ import {Link} from 'react-router-dom'
 class Home extends React.Component{
 
     render(){
+        const {auth} = this.props
         return(
-            <div>
+            <div style={{display:'flex', flexDirection:"column"}}>
                 <h1>Home Page</h1>
-                <Link to='/login'>Ir para o Login</Link>
-                <p> Message:</p>
+                {!auth ? <Link to='/login'>Ir para o Login</Link> : null}
+                {auth ?<Link to='/newitem'>Cadastrar novo item</Link>:null}
+                {auth ? <Link to='/items'>Ver lista de itens</Link>: null}
             </div>
         )
     }

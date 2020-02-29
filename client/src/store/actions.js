@@ -2,6 +2,7 @@ import * as actions from './actionTypes'
 import axios from 'axios'
 
 export const checkAuth = ()=>{
+    console.log('checkauth')
     return async (dispatch,getState)=>{
         axios.get('http://localhost:3000/authorize', { headers : { 'Authorization':'Bearer '+getState().token } } )
     .then((response) => {
@@ -18,6 +19,17 @@ export const checkAuth = ()=>{
     }
 }
 
+export const registerNewItem = (data) => {
+    return async (dispatch,getState) => {
+        console.log('registernewitem action data', data)
+        axios
+        .post('http://localhost:3000/api/v1/user/'+getState().user.id+'/item',data)
+        .then(response=>{
+            console.log(response)
+        })
+    }
+}
+
 export const handleLogin = (data)=>{
     return async dispatch=>{
         axios
@@ -30,6 +42,12 @@ export const handleLogin = (data)=>{
           console.log('error here')
           dispatch(setError(err))
         });
+    }
+}
+
+export const handleLogout = ()=>{
+    return{
+        type:actions.LOGOUT
     }
 }
 
@@ -62,4 +80,5 @@ export const setError = (error)=>{
         error:error
     }
 }
+
 

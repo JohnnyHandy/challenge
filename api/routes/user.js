@@ -70,30 +70,20 @@ router.get('/:id/item/list',middleware.authenticate,async(req,res)=>{
 });
 
 router.post('/:id/item',middleware.authenticate,async (req,res)=>{
-  if(req.session.user){
-    if(req.session.user.id == req.params.id){
       await Item.create({
         name:req.body.name,
         price:req.body.price,
         description:req.body.description,
         userId:req.params.id,
-        }).then(()=>{
-          req.flash('success','Item criado com sucesso!')
-          res.redirect('/api/v1/user/'+req.params.id+'/item/list')
+        }).then(response=>{
+          res.send(response)
+          // req.flash('success','Item criado com sucesso!')
+          // res.redirect('/api/v1/user/'+req.params.id+'/item/list')
           return Promise.resolve('Item created')
         }).catch(error=>{
           return Promise.reject(error)
         })
-    }else{
-      req.session.error = 'Unauthorized'
-      res.redirect('/api/v1')
-    }
-  }else if(req.session.error){
-    req.session.user = null
-    req.flash('info','Você não está autorizado à realizar esta ação!')
-    res.redirect('/api/v1');
-  }
-});
+      });
 
 
 router.get('/:id/item/:itemId',middleware.authenticate,(req,res)=>{

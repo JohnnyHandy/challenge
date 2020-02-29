@@ -7,9 +7,10 @@ import * as actions from './store/index'
 import './App.css';
 
 const App =(props)=> {
+  const {checkAuth,auth} = props
  useEffect(()=>{
-    props.checkAuth()
- })
+    checkAuth()
+ },[auth])
 
 
     return (

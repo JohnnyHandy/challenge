@@ -29,9 +29,7 @@ router.post('/',async (req,res,next)=>{
                        res.send({error:err})
                     }
                     const token = jwt.sign({id:user.id},jwtSecret.secret,{expiresIn:'1m'});
-                    localStorage.setItem('token','Bearer '+token);
                     req.flash('success','Login realizado com sucesso!')
-                    req.session.user = user;
                     res.status(200).send({
                         auth:true,
                         token:token,
